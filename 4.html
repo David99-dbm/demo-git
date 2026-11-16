@@ -1,0 +1,79 @@
+<!DOCTYPE.html>
+<html>
+    <head>
+        <style>
+            .w{text-align: center; margin: auto;}
+            h2{text-align: center;margin: auto;}
+            body {
+            text-align: center;
+            background-color: lightblue;
+            }
+            .tank {
+            width: 150px;
+            height: 300px;
+            border: 2px solid black;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            background-color: white;
+            }
+            .water {
+            width: 100%;
+            height: 0;
+            background-color: blue;
+            position: absolute;
+            bottom: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>WATER TANK LEVEL MONITORING SYSTEM</h2><br>
+        <div class="w">
+            <label for="a"><b>Enter Total Tank Capacity</b></label>
+            <input type="number" id="a" name="a"><br>
+            <label for="b"><b>Current Water Quantity</b></label>
+            <input type="number" id="b" name="b"><br>
+        </div>
+        <button onclick="check()">Visual</button>
+        <h3 id="p"></h3>
+        <h3 id="warning"></h3>
+        <br><br>
+        <div class="tank">
+            <div class="water"></div>
+        </div>
+        <script>
+            function check()
+            {
+                let n=document.getElementById("a").value;
+                let m=document.getElementById("b").value;
+                let p=(m/n)*100;
+                document.getElementById("p").innerHTML="Water Level:" +p+ "%";
+              
+                let water = document.querySelector(".water");
+                water.style.height = p + "%";
+            if (p > 60)
+            {
+                water.style.backgroundColor = "blue";
+            }
+            else if (p >= 30)
+            {
+                water.style.backgroundColor = "orange";
+            }
+            else
+            {
+                water.style.backgroundColor = "red";
+            }
+            if (p < 20)
+            {
+                 document.getElementById("warning").innerHTML =
+                "WARNING! Water level is too low";
+            }
+            else
+            {
+                document.getElementById("warning").innerHTML = "";
+            }
+            }
+            
+        </script>
+    </body>
+</html>
